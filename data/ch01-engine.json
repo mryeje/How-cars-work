@@ -5,14 +5,117 @@
       "id": "c1-combustion",
       "title": "Combustion Chamber",
       "page": "8",
-      "text": "Fuel burns in combustion chambers...",
-      "analogy": "Think of the combustion chamber like the firebox in a wood stove...",
+      "text": "Fuel burns in combustion chambers inside an engine...",
+      "analogy": "Think of the combustion chamber like the firebox in a wood stove.",
       "quiz": {
         "question": "What creates the 'floor' of the combustion chamber?",
         "options": ["The Engine Head", "The Top of the Piston", "The Tires"],
         "answer": 1,
         "feedback": "Correct! The piston creates the moving floor of the chamber."
       }
+    },
+    {
+      "id": "c1-block",
+      "title": "The Engine Block",
+      "page": "9",
+      "text": "An engine block is the most basic part of an engine...",
+      "analogy": "The block is like the foundation of a house—solid and it doesn’t move.",
+      "quiz": {
+        "question": "Does the engine block itself have moving parts?",
+        "options": ["Yes", "No", "Only at high RPM"],
+        "answer": 1,
+        "feedback": "Right. The block is the solid base that everything bolts onto."
+      }
+    },
+    {
+      "id": "c1-crankcase",
+      "title": "Crankcase",
+      "page": "10",
+      "text": "The crankcase is the lower part of the engine where the crankshaft runs...",
+      "analogy": "Like the bottom half of a toolbox that holds the moving parts and oil.",
+      "quiz": null
+    },
+    {
+      "id": "c1-main-bearings",
+      "title": "Main Bearings",
+      "page": "11",
+      "text": "Main bearings support the crankshaft so it can spin smoothly...",
+      "analogy": "Like smooth supports that let a heavy log roll without grinding.",
+      "quiz": null
+    },
+    {
+      "id": "c1-piston",
+      "title": "The Piston",
+      "page": "12",
+      "text": "A piston resembles an empty soup can turned upside down...",
+      "analogy": "Like a soup can getting pushed down by an explosion above it.",
+      "quiz": {
+        "question": "What shape is a piston when it is cold?",
+        "options": ["Perfectly round", "Slightly oval", "Square"],
+        "answer": 1,
+        "feedback": "Yes — slightly oval when cold, so it becomes round when hot."
+      }
+    },
+    {
+      "id": "c1-rings",
+      "title": "Rings",
+      "page": "13",
+      "text": "Rings fit around the piston and help seal the cylinder...",
+      "analogy": "Like the seal on a syringe that keeps pressure from leaking past.",
+      "quiz": null
+    },
+    {
+      "id": "c1-camshaft",
+      "title": "Camshaft",
+      "page": "16",
+      "text": "The camshaft controls when valves open and close...",
+      "analogy": "Like a timed “bump wheel” that pushes the valves at the right moment.",
+      "quiz": null
+    },
+    {
+      "id": "c1-timing",
+      "title": "Timing Systems",
+      "page": "16",
+      "text": "Timing systems keep the camshaft and crankshaft working together...",
+      "analogy": "Like two gears that must stay lined up or everything runs wrong.",
+      "quiz": null
+    },
+    {
+      "id": "c1-head",
+      "title": "Head",
+      "page": "15",
+      "text": "The engine head bolts to the top of the block and forms part of the combustion chamber...",
+      "analogy": "Like the lid on a pressure pot—strong, sealed, and shaped inside.",
+      "quiz": null
+    },
+    {
+      "id": "c1-valves",
+      "title": "Valves",
+      "page": "17",
+      "text": "Valves are doors to the combustion chambers...",
+      "analogy": "Like gates that open to let air/fuel in and exhaust out.",
+      "quiz": {
+        "question": "What do valves do?",
+        "options": ["Act as doors for fuel and exhaust", "Hold the tires on", "Steer the car"],
+        "answer": 0,
+        "feedback": "Correct — valves are timed doors for intake and exhaust."
+      }
+    },
+    {
+      "id": "c1-valve-assembly",
+      "title": "Valve Assembly",
+      "page": "18",
+      "text": "The valve assembly includes parts that move the valves and return them closed...",
+      "analogy": "Like a door hinge plus a spring that snaps it shut.",
+      "quiz": null
+    },
+    {
+      "id": "c1-engine-test",
+      "title": "Engine Test",
+      "page": "19",
+      "text": "Review: answer the questions on this page in the book, one at a time.",
+      "analogy": "This is practice day—slow and steady.",
+      "quiz": null
     }
   ]
 }
