@@ -69,7 +69,7 @@
       flex-direction: column;
       width: 100%;
     }
-    .book-btn {
+    .book-btn, .help-btn {
       width: 100%;
       justify-content: center;
     }
@@ -83,6 +83,46 @@
     height: fit-content;
     max-height: 80vh;
     overflow-y: auto;
+  }
+
+  .progress-widget {
+    background: var(--success-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px solid var(--success);
+  }
+
+  .progress-widget h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: var(--success);
+  }
+
+  .progress-bar-container {
+    background: #fff;
+    border-radius: 10px;
+    height: 30px;
+    overflow: hidden;
+    margin: 10px 0;
+  }
+
+  .progress-bar {
+    background: var(--success);
+    height: 100%;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .progress-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-top: 8px;
   }
 
   .nav-chapter {
@@ -122,6 +162,47 @@
     border-radius: 12px;
     border: 1px solid var(--border);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+
+  .welcome-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+
+  .welcome-box h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+  }
+
+  .how-it-works {
+    background: #f8fafc;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .how-it-works h3 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+
+  .step-box {
+    background: white;
+    border-left: 4px solid var(--accent);
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .step-box strong {
+    color: var(--accent);
+    font-size: 1.1rem;
   }
 
   .lesson-meta {
@@ -233,7 +314,8 @@
   .timer-btn {
     background: #333; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
   }
-  .book-btn {
+
+  .book-btn, .help-btn {
     background: var(--accent);
     color: white;
     border: none;
@@ -247,13 +329,66 @@
     gap: 8px;
     transition: background 0.2s;
   }
-  .book-btn:hover {
+  .book-btn:hover, .help-btn:hover {
     background: #1d4ed8;
+  }
+  .help-btn {
+    background: #10b981;
+  }
+  .help-btn:hover {
+    background: #059669;
   }
   .header-actions {
     display: flex;
     gap: 15px;
     align-items: center;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: var(--surface);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: #000;
+  }
+
+  .tip-icon {
+    display: inline-block;
+    background: #fbbf24;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+    margin-right: 8px;
   }
 </style>
 </head>
@@ -266,6 +401,9 @@
       <span class="subtitle">Interactive Learning Course</span>
     </div>
     <div class="header-actions">
+      <button class="help-btn" onclick="showHowItWorks()">
+        ❓ How This Works
+      </button>
       <button class="book-btn" onclick="openTextbook()">
         📖 Open Textbook
       </button>
@@ -283,7 +421,7 @@
   <main>
     <div id="lessonContainer" class="lesson-card"></div>
 
-    <div class="controls">
+    <div class="controls" id="lessonControls" style="display:none">
       <button class="btn btn-secondary" onclick="prevLesson()">← Back</button>
       <div style="text-align:right">
         <label style="display:block; margin-bottom:10px; font-size:0.9rem;">
@@ -296,11 +434,67 @@
   </main>
 </div>
 
+<!-- Modal continues in next message due to length -->
+
+<!-- How It Works Modal -->
+<div id="howItWorksModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeHowItWorks()">&times;</span>
+    <h2 style="color: var(--accent); margin-top: 0;">How This Course Works</h2>
+    
+    <p style="font-size: 1.1rem; line-height: 1.7;">
+      Welcome! This course is designed to help you learn about cars at your own pace. There's no rush, and you can't make mistakes. Here's how to get the most out of your learning:
+    </p>
+
+    <div class="step-box">
+      <strong>1. Work in Short Sessions</strong>
+      <p>Each time you sit down to learn, start the 25-minute timer at the top of the page. This keeps your learning session focused without feeling too long. When the timer ends, take a break! Stand up, stretch, get a drink. Your brain learns better with regular breaks.</p>
+    </div>
+
+    <div class="step-box">
+      <strong>2. Read Small Chunks</strong>
+      <p>Each lesson is short and focuses on just one idea. This makes it easier to understand and remember. Don't try to do too many lessons at once—one or two per session is perfect.</p>
+    </div>
+
+    <div class="step-box">
+      <strong>3. Look at the Book</strong>
+      <p>When the lesson tells you to look at the book, take your time with the diagram. The picture and the text work together to help you understand.</p>
+    </div>
+
+    <div class="step-box">
+      <strong>4. Test Yourself (The "STOP" Box)</strong>
+      <p>When you see the red "STOP" box, look away from the screen and try to explain the main idea out loud—like you're teaching it to someone. This simple step helps your brain remember it tomorrow!</p>
+    </div>
+
+    <div class="step-box">
+      <strong>5. Practice Questions</strong>
+      <p>After each lesson, you'll answer a few simple questions. These aren't tests—they're just practice to help lock in what you learned. If you get one wrong, that's okay! You can try again.</p>
+    </div>
+
+    <div class="step-box">
+      <strong>6. Check Your Progress</strong>
+      <p>The green box on the left shows how many lessons you've completed. Check the "I finished this lesson" box when you're done, and your progress is saved automatically. You can always come back and continue where you left off.</p>
+    </div>
+
+    <div class="step-box">
+      <strong>7. Come Back Regularly</strong>
+      <p>Learning works best when you spread it out. Try to do one or two lessons every few days rather than many at once. Your brain builds stronger memories this way.</p>
+    </div>
+
+    <p style="margin-top: 25px; padding: 15px; background: var(--success-bg); border-radius: 8px; border-left: 4px solid var(--success);">
+      <strong>Remember:</strong> Take your time. There's no deadline. Everyone learns at their own speed, and that's perfectly fine. If something doesn't make sense, review it again or skip it and come back later.
+    </p>
+
+    <button class="btn" onclick="closeHowItWorks()" style="margin-top: 20px; width: 100%; justify-content: center;">
+      Got It! Let's Start Learning
+    </button>
+  </div>
+</div>
+
 <script>
 let courseData = [];
 
 async function loadCourse() {
-  // Works on GitHub Pages even when the site is under /repo-name/
   const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
 
   console.log('Loading course from base URL:', base);
@@ -326,10 +520,9 @@ async function loadCourse() {
     })
   );
 
-  // Flatten into the structure the app expects
   courseData = chapters.flatMap(ch =>
     (ch.lessons || []).map(L => ({
-      ...L,                 // <-- IMPORTANT: spread operator
+      ...L,
       chapter: ch.chapter
     }))
   );
@@ -339,6 +532,7 @@ async function loadCourse() {
 
 let currentLessonIndex = 0;
 let doneLessons = JSON.parse(localStorage.getItem('carCourse_done')) || [];
+let firstVisit = !localStorage.getItem('carCourse_visited');
 
 function init() {
   if (!courseData || courseData.length === 0) {
@@ -354,7 +548,10 @@ function init() {
   const savedIndexRaw = localStorage.getItem('carCourse_lastIndex');
   const savedIndex = savedIndexRaw ? parseInt(savedIndexRaw, 10) : 0;
 
-  if (Number.isFinite(savedIndex) && savedIndex >= 0 && savedIndex < courseData.length) {
+  if (firstVisit) {
+    localStorage.setItem('carCourse_visited', 'true');
+    showWelcome();
+  } else if (Number.isFinite(savedIndex) && savedIndex >= 0 && savedIndex < courseData.length) {
     loadLesson(savedIndex);
   } else {
     loadLesson(0);
@@ -364,9 +561,7 @@ function init() {
 async function startApp() {
   try {
     await loadCourse();
-    init(); // ONLY initialize after data loads
-    
-    // Check if PDF exists
+    init();
     checkPdfAvailability();
   } catch (err) {
     console.error("Course failed to load:", err);
@@ -388,15 +583,107 @@ async function startApp() {
 }
 
 async function checkPdfAvailability() {
-  // Using Google Drive link - no need to check availability
   console.log('📖 Textbook hosted on Google Drive');
 }
 
 startApp();
 
+function showWelcome() {
+  const container = document.getElementById('lessonContainer');
+  const controls = document.getElementById('lessonControls');
+  controls.style.display = 'none';
+  
+  container.innerHTML = `
+    <div class="welcome-box">
+      <h2>Welcome to How Cars Work!</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 0;">
+        You're about to learn how cars work, one simple lesson at a time. This course is designed for you to learn comfortably at your own pace.
+      </p>
+    </div>
+
+    <div class="how-it-works">
+      <h3>📚 How This Course Works</h3>
+      
+      <div class="step-box">
+        <strong>Step 1: Start Your Timer</strong>
+        <p>See the timer at the top of the page? When you begin learning, click "Start Work". It will count down from 25 minutes. This helps you stay focused for a short, manageable time. When it's done, take a break!</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Read One Lesson</strong>
+        <p>Each lesson is short and teaches just one thing. Read it carefully. Don't worry about finishing everything today—one lesson at a time is perfect.</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Look at the Book</strong>
+        <p>When the lesson mentions the textbook, click "📖 Open Textbook" at the top and look at the page. The pictures help you understand better.</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4: Explain It to Yourself</strong>
+        <p>When you see a red "STOP!" box, look away and try to say the main idea out loud. This simple trick helps your brain remember!</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 5: Answer Practice Questions</strong>
+        <p>At the end of each lesson, you'll answer a few questions. These help you practice. If you get something wrong, you can try again—no pressure!</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 6: Check the Box</strong>
+        <p>When you finish a lesson, check the "I finished this lesson" box. Your progress saves automatically so you can continue anytime.</p>
+      </div>
+
+      <p style="margin-top: 25px; padding: 15px; background: #fef3c7; border-radius: 8px; border-left: 4px solid #f59e0b;">
+        <span class="tip-icon">💡</span>
+        <strong>Best Learning Tip:</strong> Do one or two lessons, then come back in a day or two. Spreading out your learning helps you remember better than trying to do everything at once!
+      </p>
+    </div>
+
+    <button class="btn" onclick="loadLesson(0)" style="width: 100%; justify-content: center; font-size: 1.2rem; padding: 20px;">
+      Start Lesson 1 →
+    </button>
+
+    <p style="text-align: center; margin-top: 15px; color: var(--text-muted);">
+      <small>You can review these tips anytime by clicking "❓ How This Works" at the top</small>
+    </p>
+  `;
+}
+
+function showHowItWorks() {
+  document.getElementById('howItWorksModal').style.display = 'block';
+}
+
+function closeHowItWorks() {
+  document.getElementById('howItWorksModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById('howItWorksModal');
+  if (event.target == modal) {
+    closeHowItWorks();
+  }
+}
+
 function renderSidebar() {
   const sidebar = document.getElementById('sidebar');
-  sidebar.innerHTML = "";
+  const totalLessons = courseData.length;
+  const completedLessons = doneLessons.length;
+  const progressPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+  
+  sidebar.innerHTML = `
+    <div class="progress-widget">
+      <h3>Your Progress</h3>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: ${progressPercent}%">
+          ${progressPercent}%
+        </div>
+      </div>
+      <div class="progress-text">
+        ${completedLessons} of ${totalLessons} lessons completed
+      </div>
+    </div>
+  `;
 
   let currentChapter = "";
 
@@ -431,8 +718,10 @@ function loadLesson(index) {
   if (!lesson) return;
 
   const container = document.getElementById('lessonContainer');
+  const controls = document.getElementById('lessonControls');
   const checkbox = document.getElementById('markDone');
 
+  controls.style.display = 'flex';
   checkbox.checked = doneLessons.includes(lesson.id);
 
   let quizHTML = "";
@@ -489,6 +778,7 @@ function loadLesson(index) {
   `;
 
   renderSidebar();
+  window.scrollTo(0,0);
 }
 
 function checkAnswer(btnElement, choiceIndex, correctIndex, feedbackText) {
@@ -520,14 +810,12 @@ function checkAnswer(btnElement, choiceIndex, correctIndex, feedbackText) {
 function nextLesson() {
   if (currentLessonIndex < courseData.length - 1) {
     loadLesson(currentLessonIndex + 1);
-    window.scrollTo(0,0);
   }
 }
 
 function prevLesson() {
   if (currentLessonIndex > 0) {
     loadLesson(currentLessonIndex - 1);
-    window.scrollTo(0,0);
   }
 }
 
@@ -569,7 +857,7 @@ function toggleTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
-      alert("Break time! Stand up and let your brain relax.");
+      alert("Great work! Time for a break. Stand up, stretch, and rest your eyes. Come back when you're ready for the next session.");
       isTimerRunning = false;
       timeLeft = 25 * 60;
       display.textContent = "25:00";
@@ -584,7 +872,6 @@ function toggleTimer() {
 }
 
 function openTextbook() {
-  // Google Drive link for the textbook
   const pdfUrl = 'https://drive.google.com/file/d/1mDLl94WcQqHQB2uHXBu5PDiww0MkUElN/preview';
   
   console.log('Opening textbook from Google Drive:', pdfUrl);
