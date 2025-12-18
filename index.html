@@ -388,55 +388,8 @@ async function startApp() {
 }
 
 async function checkPdfAvailability() {
-  const hostname = window.location.hostname;
-  const pathname = window.location.pathname;
-  
-  if (hostname.includes('github.io')) {
-    const username = hostname.split('.')[0];
-    const pathParts = pathname.split('/').filter(p => p);
-    const repoName = pathParts[0];
-    
-    const githubPagesUrl = `https://${username}.github.io/${repoName}/How-Cars-Work.pdf`;
-    const rawUrl = `https://raw.githubusercontent.com/${username}/${repoName}/main/How-Cars-Work.pdf`;
-    
-    // Check GitHub Pages URL
-    try {
-      const response = await fetch(githubPagesUrl, { method: 'HEAD' });
-      if (response.ok) {
-        console.log('✅ PDF found via GitHub Pages:', githubPagesUrl);
-        return;
-      }
-    } catch (err) {
-      console.log('GitHub Pages URL not accessible');
-    }
-    
-    // Check raw GitHub URL
-    try {
-      const response = await fetch(rawUrl, { method: 'HEAD' });
-      if (response.ok) {
-        console.log('✅ PDF found via raw GitHub URL:', rawUrl);
-      } else {
-        console.warn('⚠️ PDF not found. Make sure How-Cars-Work.pdf is committed to the main branch');
-      }
-    } catch (err) {
-      console.warn('⚠️ Could not access PDF:', err);
-    }
-  } else {
-    // Local or other hosting
-    const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-    const pdfUrl = base + 'How-Cars-Work.pdf';
-    
-    try {
-      const response = await fetch(pdfUrl, { method: 'HEAD' });
-      if (response.ok) {
-        console.log('✅ PDF found at:', pdfUrl);
-      } else {
-        console.warn('⚠️ PDF not found at:', pdfUrl);
-      }
-    } catch (err) {
-      console.warn('⚠️ Could not check PDF availability:', err);
-    }
-  }
+  // Using Google Drive link - no need to check availability
+  console.log('📖 Textbook hosted on Google Drive');
 }
 
 startApp();
@@ -631,51 +584,11 @@ function toggleTimer() {
 }
 
 function openTextbook() {
-  // Detect if we're on GitHub Pages
-  const hostname = window.location.hostname;
-  const pathname = window.location.pathname;
+  // Google Drive link for the textbook
+  const pdfUrl = 'https://drive.google.com/file/d/1mDLl94WcQqHQB2uHXBu5PDiww0MkUElN/preview';
   
-  let pdfUrl;
-  
-  if (hostname.includes('github.io')) {
-    // On GitHub Pages - extract username and repo name
-    const username = hostname.split('.')[0]; // e.g., 'mryeje'
-    const pathParts = pathname.split('/').filter(p => p);
-    const repoName = pathParts[0]; // e.g., 'How-cars-work'
-    
-    // Try GitHub Pages URL first, but also prepare raw URL
-    const githubPagesUrl = `https://${username}.github.io/${repoName}/How-Cars-Work.pdf`;
-    const rawUrl = `https://raw.githubusercontent.com/${username}/${repoName}/main/How-Cars-Work.pdf`;
-    
-    console.log('GitHub Pages URL:', githubPagesUrl);
-    console.log('Raw GitHub URL:', rawUrl);
-    
-    // Try GitHub Pages first
-    pdfUrl = githubPagesUrl;
-    
-    // Open PDF
-    fetch(pdfUrl, { method: 'HEAD' })
-      .then(response => {
-        if (response.ok) {
-          window.open(pdfUrl, '_blank');
-        } else {
-          // Fall back to raw URL
-          console.log('GitHub Pages URL failed, trying raw URL');
-          window.open(rawUrl, '_blank');
-        }
-      })
-      .catch(() => {
-        // If fetch fails, just try raw URL
-        console.log('Fetch failed, trying raw URL');
-        window.open(rawUrl, '_blank');
-      });
-  } else {
-    // Local development or other hosting
-    const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-    pdfUrl = base + 'How-Cars-Work.pdf';
-    console.log('Opening PDF at:', pdfUrl);
-    window.open(pdfUrl, '_blank');
-  }
+  console.log('Opening textbook from Google Drive:', pdfUrl);
+  window.open(pdfUrl, '_blank');
 }
 </script>
 
