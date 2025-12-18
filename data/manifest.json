@@ -1,8 +1,21 @@
 {
+  "courseTitle": "How Cars Work",
   "chapters": [
-    { "id": "ch01", "title": "Chapter 1: Engine", "file": "ch01-engine.json" },
-    { "id": "ch02", "title": "Chapter 2: Drive Train", "file": "ch02-drive-train.json" },
-    { "id": "ch03", "title": "Chapter 3: Fuel System", "file": "ch03-fuel-system.json" },
-    { "id": "ch04", "title": "Chapter 4: Cooling System", "file": "ch04-cooling-system.json" }
+    {
+      "chapter": "Chapter 1: Engine",
+      "file": "ch01-engine.json"
+    },
+    {
+      "chapter": "Chapter 2: Drive Train",
+      "file": "ch02-drive-train.json"
+    },
+    {
+      "chapter": "Chapter 3: Fuel System",
+      "file": "ch03-fuel-system.json"
+    },
+    {
+      "chapter": "Chapter 4: Cooling System",
+      "file": "ch04-cooling-system.json"
+    }
   ]
 }
