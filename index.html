@@ -277,12 +277,17 @@ async function loadCourse() {
 }
 
 async function startApp() {
-  await loadCourse();
-   // your existing function that uses courseData
+  try {
+    await loadCourse();
+    init(); // only run after data is loaded
+  } catch (err) {
+    console.error("Course failed to load:", err);
+    const el = document.getElementById('lessonContainer');
+    if (el) el.innerHTML = "<h2>Couldn’t load the course</h2><p>Open the Console (F12) to see the exact error.</p>";
+  }
 }
 
 startApp();
-
 let currentLessonIndex = 0;
 let doneLessons = JSON.parse(localStorage.getItem('carCourse_done')) || [];
 
@@ -324,7 +329,14 @@ function renderSidebar() {
 }
 
 function loadLesson(index) {
-  currentLessonIndex = index;
+  
+  if (!courseData || courseData.length === 0) {
+    const el = document.getElementById('lessonContainer');
+    if (el) el.innerHTML = \"<h2>Loading…</h2><p>If this stays, a data file is missing or invalid.</p>\";
+    return;
+  }
+
+currentLessonIndex = index;
   localStorage.setItem('carCourse_lastIndex', index);
 
   const lesson = courseData[index];
@@ -479,7 +491,7 @@ function toggleTimer() {
   }, 1000);
 }
 
-init();
+
 </script>
 </body>
 </html>
