@@ -59,7 +59,9 @@
   }
 
   .mobile-menu-btn {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -74,10 +76,23 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     z-index: 200;
     font-weight: bold;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .mobile-menu-btn:hover {
+    background: #1d4ed8;
+    transform: scale(1.05);
   }
 
   .mobile-menu-btn:active {
     transform: scale(0.95);
+  }
+
+  @media (min-width: 801px) {
+    .mobile-menu-btn {
+      display: none;
+    }
   }
 
   .sidebar-overlay {
@@ -112,7 +127,10 @@
   }
 
   @media (max-width: 800px) {
-    .container { grid-template-columns: 1fr; }
+    .container { 
+      grid-template-columns: 1fr;
+      padding-bottom: 100px; /* Space for floating button */
+    }
     
     .sidebar { 
       display: none;
@@ -130,12 +148,6 @@
 
     .sidebar.mobile-open {
       display: block;
-    }
-
-    .mobile-menu-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .mobile-close-btn {
@@ -158,6 +170,19 @@
     .timer-widget {
       width: 100%;
       justify-content: center;
+    }
+
+    .lesson-card {
+      padding: 25px 20px;
+    }
+
+    .controls {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .controls > div {
+      text-align: center !important;
     }
   }
 
@@ -522,7 +547,8 @@
 
 <!-- Mobile Menu Button -->
 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open Menu">
-  📚<br><span style="font-size: 0.5em;">Menu</span>
+  <div style="font-size: 2rem;">📚</div>
+  <div style="font-size: 0.7rem; margin-top: 2px;">Menu</div>
 </button>
 
 <!-- Sidebar Overlay for Mobile -->
