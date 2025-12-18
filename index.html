@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>How Cars Work</title>
+<title>How Cars Work — Dad’s Course</title>
 <style>
   :root { 
-    --bg: #FDFBF7; /* Warm cream */
+    --bg: #FDFBF7; 
     --surface: #ffffff;
     --text: #1a1a1a;
     --text-muted: #555555;
@@ -34,30 +34,26 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   }
 
   .header-content {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  h1 { margin: 0; font-size: 1.2rem; color: var(--accent); }
-  .subtitle { font-size: 0.9rem; color: var(--text-muted); font-weight: normal; }
-
   .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 300px 1fr;
     gap: 40px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 850px) {
     .container { grid-template-columns: 1fr; }
     .sidebar { display: none; }
   }
@@ -75,423 +71,210 @@
   .nav-chapter {
     font-weight: bold;
     margin-top: 15px;
-    margin-bottom: 8px;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
   .nav-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 10px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 8px;
-    margin-bottom: 4px;
-    border: 1px solid transparent;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .nav-item:hover { background-color: var(--bg); }
-  
-  .nav-item.active { 
-    background-color: var(--accent-light); 
-    color: var(--accent); 
-    font-weight: bold;
-    border-color: var(--accent);
-  }
-
-  .nav-item.done .status { color: var(--success); font-size: 1.2rem; }
+  .nav-item.active { background: var(--accent-light); color: var(--accent); font-weight: bold; }
 
   .lesson-card {
     background: var(--surface);
     padding: 40px;
     border-radius: 12px;
     border: 1px solid var(--border);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-  }
-
-  .lesson-meta {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    background: #f3f4f6;
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-  }
-
-  h2 { font-size: 2rem; margin-top: 0; color: #111; }
-  
-  .book-reference {
-    background: #fffbeb;
-    border-left: 5px solid #f59e0b;
-    padding: 15px;
-    margin: 20px 0;
-    font-size: 1.1rem;
-  }
-
-  .content-text {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   }
 
   .analogy-box {
-    background: var(--accent-light);
-    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    border-left: 5px solid var(--accent);
     padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
+    margin: 20px 0;
   }
-  .analogy-box h3 { margin-top: 0; color: var(--accent); font-size: 1.1rem; }
 
   .recall-box {
-    border: 2px dashed #b91c1c;
-    background: #fef2f2;
+    border: 3px dashed #f87171;
+    background: #fff1f2;
     padding: 20px;
-    border-radius: 8px;
-    margin: 30px 0;
     text-align: center;
+    margin: 30px 0;
     font-weight: bold;
   }
 
-  .quiz-box {
-    margin-top: 40px;
-    border-top: 2px solid var(--border);
-    padding-top: 20px;
-  }
-
+  .quiz-box { border-top: 2px solid var(--border); margin-top: 30px; padding-top: 20px; }
+  
   .option {
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: var(--bg);
-    border: 2px solid var(--border);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.05rem;
-    font-family: var(--font-main);
-  }
-  .option:hover { border-color: var(--text-muted); }
-  .option.correct { background: var(--success-bg); border-color: var(--success); }
-  .option.incorrect { background: #fef2f2; border-color: #ef4444; }
-
-  .feedback { margin-top: 15px; font-weight: bold; display: none; padding: 10px; border-radius: 4px; }
-
-  .controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-
-  button.btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: block; width: 100%; text-align: left; padding: 15px;
+    margin: 10px 0; border: 2px solid var(--border); border-radius: 8px;
+    background: white; cursor: pointer; font-size: 1rem;
   }
   
-  button.btn:hover { background: #1d4ed8; }
-  button.btn-secondary { background: white; color: var(--text); border: 2px solid var(--border); }
-  button.btn-secondary:hover { background: var(--bg); }
+  .option.correct { background: var(--success-bg); border-color: var(--success); }
 
   .timer-widget {
-    background: #111;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-family: monospace;
-    font-size: 1.2rem;
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    background: #111; color: #fff; padding: 10px 20px;
+    border-radius: 50px; display: flex; gap: 15px; align-items: center;
   }
-  .timer-btn {
-    background: #333; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
+
+  .btn {
+    padding: 15px 25px; border-radius: 50px; border: none;
+    font-weight: bold; cursor: pointer; font-size: 1rem;
   }
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-secondary { background: #e5e7eb; color: var(--text); }
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-content">
-    <div>
-      <h1>How Cars Work</h1>
-      <span class="subtitle">Dad's Learning Course</span>
-    </div>
+    <div><strong>How Cars Work</strong> — Course</div>
     <div class="timer-widget">
       <span id="timerDisplay">25:00</span>
-      <button class="timer-btn" onclick="toggleTimer()">Start Work</button>
+      <button onclick="toggleTimer()" id="timerBtn" style="cursor:pointer">Start Focus</button>
     </div>
   </div>
 </header>
 
 <div class="container">
   <div class="sidebar" id="sidebar"></div>
-
   <main>
     <div id="lessonContainer" class="lesson-card"></div>
-
-    <div class="controls">
-      <button class="btn btn-secondary" onclick="prevLesson()">← Back</button>
-      <div style="text-align:right">
-        <label style="display:block; margin-bottom:10px; font-size:0.9rem;">
-          <input type="checkbox" id="markDone" onchange="toggleDone()" style="transform: scale(1.5); margin-right: 10px;"> 
-          I finished this lesson
-        </label>
-        <button class="btn" onclick="nextLesson()">Next Lesson →</button>
-      </div>
+    <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+        <button class="btn btn-secondary" onclick="prevLesson()">Back</button>
+        <div>
+            <input type="checkbox" id="markDone" onchange="toggleDone()" style="transform: scale(1.5);"> 
+            <label for="markDone"> Finished</label>
+        </div>
+        <button class="btn btn-primary" onclick="nextLesson()">Next</button>
     </div>
   </main>
 </div>
 
 <script>
-let courseData = [];
-
-async function loadCourse() {
-  // Works on GitHub Pages even when the site is under /repo-name/
-  const base = location.origin + location.pathname.replace(/\/[^/]*$/, "/");
-  const manifest = await fetch(base + "data/manifest.json").then(r => r.json());
-
-  const chapterFiles = manifest.chapters.map(c => base + "data/" + c.file);
-  const chapters = await Promise.all(chapterFiles.map(f => fetch(f).then(r => r.json())));
-
-  // Flatten into the structure your app already expects
-  courseData = chapters.flatMap(ch =>
-    ch.lessons.map(L => ({
-      ...L,
-      chapter: ch.chapter
-    }))
-  );
-}
-
-async function startApp() {
-  try {
-    await loadCourse();
-    init(); // only run after data is loaded
-  } catch (err) {
-    console.error("Course failed to load:", err);
-    const el = document.getElementById('lessonContainer');
-    if (el) el.innerHTML = "<h2>Couldn’t load the course</h2><p>Open the Console (F12) to see the exact error.</p>";
+const courseData = [
+  {
+    id: "intro", chapter: "Getting Started", title: "How to Learn", page: "1",
+    text: "We aren't going to cram. We are going to build 'chunks' of knowledge. 1. Read a section. 2. Look at the picture in the book. 3. Look away and explain it out loud.",
+    analogy: "Learning a car is like building one: you don't start with the whole car, you start with one bolt and one bracket until it all connects.",
+    quiz: { q: "What is the best way to remember a lesson?", a: "Explain it out loud after reading", opts: ["Read it 5 times fast", "Explain it out loud after reading", "Just keep going"] }
+  },
+  {
+    id: "c1-block", chapter: "Chapter 1: Engine", title: "The Engine Block", page: "9",
+    text: "The engine block is the foundation. It's a solid piece of iron or aluminum with holes (cylinders) bored into it. It doesn't move, but everything else moves inside it.",
+    analogy: "The block is like the <strong>foundation of a house</strong>. It holds everything steady while the people move around inside.",
+    quiz: { q: "Does the engine block have moving parts?", a: "No, it is a solid casting", opts: ["Yes, it spins", "No, it is a solid casting"] }
+  },
+  {
+    id: "c1-piston", chapter: "Chapter 1: Engine", title: "The Piston", page: "12",
+    text: "The piston is like an upside-down soup can. When fuel explodes, it drives the piston down with massive force.",
+    analogy: "Think of a <strong>bicycle pedal</strong>. Your leg (the explosion) pushes down on the pedal (the piston) to create movement.",
+    quiz: { q: "What drives the piston down?", a: "The force of burning fuel", opts: ["Gravity", "The force of burning fuel", "The battery"] }
+  },
+  {
+    id: "c2-trans", chapter: "Chapter 2: Drive Train", title: "Transmission", page: "24",
+    text: "The transmission is a box of gears. It takes the engine's power and decides how much of it to send to the wheels based on how fast you want to go.",
+    analogy: "It's like a <strong>10-speed bike</strong>. You use different gears to make it easier to go up a hill or go fast on a flat road.",
+    quiz: { q: "What does the transmission use to change speed?", a: "Different sized gears", opts: ["More gas", "Different sized gears", "Water pressure"] }
   }
-}
+  // You can easily add more lessons here by following the format
+];
 
-startApp();
-let currentLessonIndex = 0;
-let doneLessons = JSON.parse(localStorage.getItem('carCourse_done')) || [];
+let currentIndex = 0;
+let doneLessons = JSON.parse(localStorage.getItem('dad_car_done')) || [];
 
 function init() {
   renderSidebar();
-
-  const savedIndex = localStorage.getItem('carCourse_lastIndex');
-  if (savedIndex) {
-    loadLesson(parseInt(savedIndex, 10));
-  } else {
-    loadLesson(0);
-  }
+  loadLesson(0);
 }
 
 function renderSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.innerHTML = "";
-
-  let currentChapter = "";
-
-  courseData.forEach((lesson, index) => {
-    if (lesson.chapter !== currentChapter) {
-      const chapHeader = document.createElement('div');
-      chapHeader.className = "nav-chapter";
-      chapHeader.textContent = lesson.chapter;
-      sidebar.appendChild(chapHeader);
-      currentChapter = lesson.chapter;
+  const sb = document.getElementById('sidebar');
+  sb.innerHTML = "";
+  let currentChap = "";
+  courseData.forEach((l, i) => {
+    if(l.chapter !== currentChap) {
+      const h = document.createElement('div'); h.className="nav-chapter"; h.textContent=l.chapter; sb.appendChild(h);
+      currentChap = l.chapter;
     }
-
     const item = document.createElement('div');
-    item.className = `nav-item ${index === currentLessonIndex ? 'active' : ''} ${doneLessons.includes(lesson.id) ? 'done' : ''}`;
-    item.onclick = () => loadLesson(index);
-    item.innerHTML = `
-      <span>${lesson.title}</span>
-      <span class="status">${doneLessons.includes(lesson.id) ? '✓' : ''}</span>
-    `;
-    sidebar.appendChild(item);
+    item.className = `nav-item ${i === currentIndex ? 'active' : ''}`;
+    item.innerHTML = `<span>${l.title}</span> <span>${doneLessons.includes(l.id) ? '✓' : ''}</span>`;
+    item.onclick = () => loadLesson(i);
+    sb.appendChild(item);
   });
 }
 
-function loadLesson(index) {
-  
-  if (!courseData || courseData.length === 0) {
-    const el = document.getElementById('lessonContainer');
-    if (el) el.innerHTML = \"<h2>Loading…</h2><p>If this stays, a data file is missing or invalid.</p>\";
-    return;
-  }
-
-currentLessonIndex = index;
-  localStorage.setItem('carCourse_lastIndex', index);
-
-  const lesson = courseData[index];
+function loadLesson(i) {
+  currentIndex = i;
+  const l = courseData[i];
   const container = document.getElementById('lessonContainer');
-  const checkbox = document.getElementById('markDone');
-
-  checkbox.checked = doneLessons.includes(lesson.id);
-
-  let quizHTML = "";
-  if (lesson.quiz) {
-    const safeFeedback = lesson.quiz.feedback.replace(/'/g, "\\'");
-    quizHTML = `
-      <div class="quiz-box">
-        <h3>Quick Practice:</h3>
-        <p>${lesson.quiz.question}</p>
-        <div id="quizOptions">
-          ${lesson.quiz.options.map((opt, i) =>
-            `<button class="option" onclick="checkAnswer(this, ${i}, ${lesson.quiz.answer}, '${safeFeedback}')">${opt}</button>`
-          ).join('')}
-        </div>
-        <div id="quizFeedback" class="feedback"></div>
-      </div>
-    `;
-  }
-
-  let analogyHTML = "";
-  if (lesson.analogy) {
-    analogyHTML = `
-      <div class="analogy-box">
-        <h3>💡 Plain English Explanation</h3>
-        <p>${lesson.analogy}</p>
-      </div>
-    `;
-  }
+  document.getElementById('markDone').checked = doneLessons.includes(l.id);
 
   container.innerHTML = `
-    <div class="lesson-meta">Page ${lesson.page} • ${lesson.chapter}</div>
-    <h2>${lesson.title}</h2>
-
-    ${analogyHTML}
-
-    <div class="book-reference">
-      <strong>📖 Book Reading:</strong><br>
-      Please turn to <strong>Page ${lesson.page}</strong> in the book.<br>
-      <em>Look at the diagram while you read the text below.</em> 
+    <div style="color:var(--accent); font-weight:bold; margin-bottom:10px;">Page ${l.page} in the book</div>
+    <h2>${l.title}</h2>
+    <div class="analogy-box"><strong>The Simple Way to Think About It:</strong><br>${l.analogy}</div>
+    <p>${l.text}</p>
+    <div class="recall-box">🛑 STOP & RECALL<br>Look away from the screen. Explain what a ${l.title} does in your own words.</div>
+    <div class="quiz-box">
+        <p><strong>Quick Check:</strong> ${l.quiz.q}</p>
+        ${l.quiz.opts.map(opt => `<button class="option" onclick="checkAnswer(this, '${l.quiz.a}')">${opt}</button>`).join('')}
     </div>
-
-    <div class="content-text">
-      ${lesson.text}
-    </div>
-
-    <div class="recall-box">
-      🛑 STOP! <br>
-      Look away from the screen.<br>
-      Can you explain the main idea out loud in one sentence?<br>
-      <em>(This step helps you remember it tomorrow!)</em>
-    </div>
-
-    ${quizHTML}
   `;
-
   renderSidebar();
 }
 
-function checkAnswer(btnElement, choiceIndex, correctIndex, feedbackText) {
-  const parent = document.getElementById('quizOptions');
-  const feedbackEl = document.getElementById('quizFeedback');
-
-  Array.from(parent.children).forEach(btn => {
-    btn.classList.remove('correct', 'incorrect');
-    btn.disabled = true;
-  });
-
-  if (choiceIndex === correctIndex) {
-    btnElement.classList.add('correct');
-    feedbackEl.style.backgroundColor = "var(--success-bg)";
-    feedbackEl.style.color = "var(--success)";
-    feedbackEl.textContent = "✅ " + feedbackText;
-  } else {
-    btnElement.classList.add('incorrect');
-    feedbackEl.style.backgroundColor = "#fef2f2";
-    feedbackEl.style.color = "#d32f2f";
-    feedbackEl.textContent = "Not quite. Reread the 'Plain English Explanation' above and try again!";
-    Array.from(parent.children).forEach(btn => btn.disabled = false);
-  }
-
-  feedbackEl.style.display = "block";
+function checkAnswer(btn, correct) {
+    if(btn.textContent === correct) {
+        btn.classList.add('correct');
+        alert("Spot on!");
+    } else {
+        alert("Not quite—try reading the explanation again.");
+    }
 }
 
-function nextLesson() {
-  if (currentLessonIndex < courseData.length - 1) {
-    loadLesson(currentLessonIndex + 1);
-    window.scrollTo(0,0);
-  }
-}
-
-function prevLesson() {
-  if (currentLessonIndex > 0) {
-    loadLesson(currentLessonIndex - 1);
-    window.scrollTo(0,0);
-  }
-}
+function nextLesson() { if(currentIndex < courseData.length-1) loadLesson(currentIndex+1); }
+function prevLesson() { if(currentIndex > 0) loadLesson(currentIndex-1); }
 
 function toggleDone() {
-  const lesson = courseData[currentLessonIndex];
-  const checkbox = document.getElementById('markDone');
-
-  if (checkbox.checked) {
-    if (!doneLessons.includes(lesson.id)) doneLessons.push(lesson.id);
-  } else {
-    doneLessons = doneLessons.filter(id => id !== lesson.id);
-  }
-
-  localStorage.setItem('carCourse_done', JSON.stringify(doneLessons));
-  renderSidebar();
-}
-
-let timerInterval;
-let timeLeft = 25 * 60;
-let isTimerRunning = false;
-
-function toggleTimer() {
-  const display = document.getElementById('timerDisplay');
-  const btn = document.querySelector('.timer-btn');
-
-  if (isTimerRunning) {
-    clearInterval(timerInterval);
-    isTimerRunning = false;
-    btn.textContent = "Start Work";
-    return;
-  }
-
-  isTimerRunning = true;
-  btn.textContent = "Pause";
-
-  timerInterval = setInterval(() => {
-    timeLeft--;
-
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      alert("Break time! Stand up and let your brain relax.");
-      isTimerRunning = false;
-      timeLeft = 25 * 60;
-      display.textContent = "25:00";
-      btn.textContent = "Start Work";
-      return;
+    const id = courseData[currentIndex].id;
+    if(document.getElementById('markDone').checked) {
+        if(!doneLessons.includes(id)) doneLessons.push(id);
+    } else {
+        doneLessons = doneLessons.filter(d => d !== id);
     }
-
-    const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-    const s = (timeLeft % 60).toString().padStart(2, '0');
-    display.textContent = `${m}:${s}`;
-  }, 1000);
+    localStorage.setItem('dad_car_done', JSON.stringify(doneLessons));
+    renderSidebar();
 }
 
+// Timer
+let timer; let seconds = 1500; let running = false;
+function toggleTimer() {
+    running = !running;
+    document.getElementById('timerBtn').textContent = running ? "Pause" : "Resume Focus";
+    if(running) {
+        timer = setInterval(() => {
+            seconds--;
+            let m = Math.floor(seconds/60); let s = seconds%60;
+            document.getElementById('timerDisplay').textContent = `${m}:${s < 10 ? '0'+s : s}`;
+            if(seconds <= 0) { clearInterval(timer); alert("Time for a break! Let your brain rest."); }
+        }, 1000);
+    } else { clearInterval(timer); }
+}
 
+init();
 </script>
 </body>
 </html>
