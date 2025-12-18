@@ -1,6 +1,11 @@
 {
   "chapters": [
     { "id": "ch01", "title": "Chapter 1: Engine", "file": "ch01-engine.json" },
-    { "id": "ch02", "title": "Chapter 2: Drive Train", "file": "ch02-drive-train.json" }
+    { "id": "ch02", "title": "Chapter 2: Drive Train", "file": "ch02-drive-train.json" },
+    { "id": "ch03", "title": "Chapter 3: Fuel System", "file": "ch03-fuel-system.json" },
+    { "id": "ch04", "title": "Chapter 4: Cooling System", "file": "ch04-cooling-system.json" },
+    { "id": "ch05", "title": "Chapter 5: Running Gear", "file": "ch05-running-gear.json" },
+    { "id": "ch06", "title": "Chapter 6: Brakes", "file": "ch06-brakes.json" },
+    { "id": "ch07", "title": "Chapter 7: Electrical System", "file": "ch07-electrical-system.json" }
   ]
 }
