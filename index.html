@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>How Cars Work</title>
+<style>
+  :root { 
+    --bg: #FDFBF7; /* Warm cream */
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #555555;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --success: #166534;
+    --success-bg: #dcfce7;
+    --border: #e5e7eb;
+    --font-main: "Verdana", "Segoe UI", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 { margin: 0; font-size: 1.2rem; color: var(--accent); }
+  .subtitle { font-size: 0.9rem; color: var(--text-muted); font-weight: normal; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+  }
+
+  @media (max-width: 800px) {
+    .container { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+  }
+
+  .sidebar {
+    background: var(--surface);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    height: fit-content;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .nav-chapter {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    border: 1px solid transparent;
+  }
+
+  .nav-item:hover { background-color: var(--bg); }
+  
+  .nav-item.active { 
+    background-color: var(--accent-light); 
+    color: var(--accent); 
+    font-weight: bold;
+    border-color: var(--accent);
+  }
+
+  .nav-item.done .status { color: var(--success); font-size: 1.2rem; }
+
+  .lesson-card {
+    background: var(--surface);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+
+  .lesson-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: #f3f4f6;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+  }
+
+  h2 { font-size: 2rem; margin-top: 0; color: #111; }
+  
+  .book-reference {
+    background: #fffbeb;
+    border-left: 5px solid #f59e0b;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.1rem;
+  }
+
+  .content-text {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+
+  .analogy-box {
+    background: var(--accent-light);
+    border: 1px solid #bfdbfe;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  .analogy-box h3 { margin-top: 0; color: var(--accent); font-size: 1.1rem; }
+
+  .recall-box {
+    border: 2px dashed #b91c1c;
+    background: #fef2f2;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .quiz-box {
+    margin-top: 40px;
+    border-top: 2px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-family: var(--font-main);
+  }
+  .option:hover { border-color: var(--text-muted); }
+  .option.correct { background: var(--success-bg); border-color: var(--success); }
+  .option.incorrect { background: #fef2f2; border-color: #ef4444; }
+
+  .feedback { margin-top: 15px; font-weight: bold; display: none; padding: 10px; border-radius: 4px; }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  button.btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button.btn:hover { background: #1d4ed8; }
+  button.btn-secondary { background: white; color: var(--text); border: 2px solid var(--border); }
+  button.btn-secondary:hover { background: var(--bg); }
+
+  .timer-widget {
+    background: #111;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: monospace;
+    font-size: 1.2rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .timer-btn {
+    background: #333; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div>
+      <h1>How Cars Work</h1>
+      <span class="subtitle">Dad's Learning Course</span>
+    </div>
+    <div class="timer-widget">
+      <span id="timerDisplay">25:00</span>
+      <button class="timer-btn" onclick="toggleTimer()">Start Work</button>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="sidebar" id="sidebar"></div>
+
+  <main>
+    <div id="lessonContainer" class="lesson-card"></div>
+
+    <div class="controls">
+      <button class="btn btn-secondary" onclick="prevLesson()">← Back</button>
+      <div style="text-align:right">
+        <label style="display:block; margin-bottom:10px; font-size:0.9rem;">
+          <input type="checkbox" id="markDone" onchange="toggleDone()" style="transform: scale(1.5); margin-right: 10px;"> 
+          I finished this lesson
+        </label>
+        <button class="btn" onclick="nextLesson()">Next Lesson →</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+let courseData = [];
+
+async function loadCourse() {
+  // Works on GitHub Pages even when the site is under /repo-name/
+  const base = location.origin + location.pathname.replace(/\/[^/]*$/, "/");
+  const manifest = await fetch(base + "data/manifest.json").then(r => r.json());
+
+  const chapterFiles = manifest.chapters.map(c => base + "data/" + c.file);
+  const chapters = await Promise.all(chapterFiles.map(f => fetch(f).then(r => r.json())));
+
+  // Flatten into the structure your app already expects
+  courseData = chapters.flatMap(ch =>
+    ch.lessons.map(L => ({
+      ...L,
+      chapter: ch.chapter
+    }))
+  );
+}
+
+async function startApp() {
+  await loadCourse();
+  init(); // your existing function that uses courseData
+}
+
+startApp();
+
+let currentLessonIndex = 0;
+let doneLessons = JSON.parse(localStorage.getItem('carCourse_done')) || [];
+
+function init() {
+  renderSidebar();
+
+  const savedIndex = localStorage.getItem('carCourse_lastIndex');
+  if (savedIndex) {
+    loadLesson(parseInt(savedIndex, 10));
+  } else {
+    loadLesson(0);
+  }
+}
+
+function renderSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.innerHTML = "";
+
+  let currentChapter = "";
+
+  courseData.forEach((lesson, index) => {
+    if (lesson.chapter !== currentChapter) {
+      const chapHeader = document.createElement('div');
+      chapHeader.className = "nav-chapter";
+      chapHeader.textContent = lesson.chapter;
+      sidebar.appendChild(chapHeader);
+      currentChapter = lesson.chapter;
+    }
+
+    const item = document.createElement('div');
+    item.className = `nav-item ${index === currentLessonIndex ? 'active' : ''} ${doneLessons.includes(lesson.id) ? 'done' : ''}`;
+    item.onclick = () => loadLesson(index);
+    item.innerHTML = `
+      <span>${lesson.title}</span>
+      <span class="status">${doneLessons.includes(lesson.id) ? '✓' : ''}</span>
+    `;
+    sidebar.appendChild(item);
+  });
+}
+
+function loadLesson(index) {
+  currentLessonIndex = index;
+  localStorage.setItem('carCourse_lastIndex', index);
+
+  const lesson = courseData[index];
+  const container = document.getElementById('lessonContainer');
+  const checkbox = document.getElementById('markDone');
+
+  checkbox.checked = doneLessons.includes(lesson.id);
+
+  let quizHTML = "";
+  if (lesson.quiz) {
+    const safeFeedback = lesson.quiz.feedback.replace(/'/g, "\\'");
+    quizHTML = `
+      <div class="quiz-box">
+        <h3>Quick Practice:</h3>
+        <p>${lesson.quiz.question}</p>
+        <div id="quizOptions">
+          ${lesson.quiz.options.map((opt, i) =>
+            `<button class="option" onclick="checkAnswer(this, ${i}, ${lesson.quiz.answer}, '${safeFeedback}')">${opt}</button>`
+          ).join('')}
+        </div>
+        <div id="quizFeedback" class="feedback"></div>
+      </div>
+    `;
+  }
+
+  let analogyHTML = "";
+  if (lesson.analogy) {
+    analogyHTML = `
+      <div class="analogy-box">
+        <h3>💡 Plain English Explanation</h3>
+        <p>${lesson.analogy}</p>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="lesson-meta">Page ${lesson.page} • ${lesson.chapter}</div>
+    <h2>${lesson.title}</h2>
+
+    ${analogyHTML}
+
+    <div class="book-reference">
+      <strong>📖 Book Reading:</strong><br>
+      Please turn to <strong>Page ${lesson.page}</strong> in the book.<br>
+      <em>Look at the diagram while you read the text below.</em> 
+    </div>
+
+    <div class="content-text">
+      ${lesson.text}
+    </div>
+
+    <div class="recall-box">
+      🛑 STOP! <br>
+      Look away from the screen.<br>
+      Can you explain the main idea out loud in one sentence?<br>
+      <em>(This step helps you remember it tomorrow!)</em>
+    </div>
+
+    ${quizHTML}
+  `;
+
+  renderSidebar();
+}
+
+function checkAnswer(btnElement, choiceIndex, correctIndex, feedbackText) {
+  const parent = document.getElementById('quizOptions');
+  const feedbackEl = document.getElementById('quizFeedback');
+
+  Array.from(parent.children).forEach(btn => {
+    btn.classList.remove('correct', 'incorrect');
+    btn.disabled = true;
+  });
+
+  if (choiceIndex === correctIndex) {
+    btnElement.classList.add('correct');
+    feedbackEl.style.backgroundColor = "var(--success-bg)";
+    feedbackEl.style.color = "var(--success)";
+    feedbackEl.textContent = "✅ " + feedbackText;
+  } else {
+    btnElement.classList.add('incorrect');
+    feedbackEl.style.backgroundColor = "#fef2f2";
+    feedbackEl.style.color = "#d32f2f";
+    feedbackEl.textContent = "Not quite. Reread the 'Plain English Explanation' above and try again!";
+    Array.from(parent.children).forEach(btn => btn.disabled = false);
+  }
+
+  feedbackEl.style.display = "block";
+}
+
+function nextLesson() {
+  if (currentLessonIndex < courseData.length - 1) {
+    loadLesson(currentLessonIndex + 1);
+    window.scrollTo(0,0);
+  }
+}
+
+function prevLesson() {
+  if (currentLessonIndex > 0) {
+    loadLesson(currentLessonIndex - 1);
+    window.scrollTo(0,0);
+  }
+}
+
+function toggleDone() {
+  const lesson = courseData[currentLessonIndex];
+  const checkbox = document.getElementById('markDone');
+
+  if (checkbox.checked) {
+    if (!doneLessons.includes(lesson.id)) doneLessons.push(lesson.id);
+  } else {
+    doneLessons = doneLessons.filter(id => id !== lesson.id);
+  }
+
+  localStorage.setItem('carCourse_done', JSON.stringify(doneLessons));
+  renderSidebar();
+}
+
+let timerInterval;
+let timeLeft = 25 * 60;
+let isTimerRunning = false;
+
+function toggleTimer() {
+  const display = document.getElementById('timerDisplay');
+  const btn = document.querySelector('.timer-btn');
+
+  if (isTimerRunning) {
+    clearInterval(timerInterval);
+    isTimerRunning = false;
+    btn.textContent = "Start Work";
+    return;
+  }
+
+  isTimerRunning = true;
+  btn.textContent = "Pause";
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      alert("Break time! Stand up and let your brain relax.");
+      isTimerRunning = false;
+      timeLeft = 25 * 60;
+      display.textContent = "25:00";
+      btn.textContent = "Start Work";
+      return;
+    }
+
+    const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+    const s = (timeLeft % 60).toString().padStart(2, '0');
+    display.textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "chapter": "Chapter 1: Engine",
+  "lessons": [
+    {
+      "id": "c1-combustion",
+      "title": "Combustion Chamber",
+      "page": "8",
+      "text": "Fuel burns in combustion chambers...",
+      "analogy": "Think of the combustion chamber like the firebox in a wood stove...",
+      "quiz": {
+        "question": "What creates the 'floor' of the combustion chamber?",
+        "options": ["The Engine Head", "The Top of the Piston", "The Tires"],
+        "answer": 1,
+        "feedback": "Correct! The piston creates the moving floor of the chamber."
+      }
+    }
+  ]
+}

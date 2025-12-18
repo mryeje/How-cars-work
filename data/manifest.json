@@ -1,0 +1,6 @@
+{
+  "chapters": [
+    { "id": "ch01", "title": "Chapter 1: Engine", "file": "ch01-engine.json" },
+    { "id": "ch02", "title": "Chapter 2: Drive Train", "file": "ch02-drive-train.json" }
+  ]
+}
