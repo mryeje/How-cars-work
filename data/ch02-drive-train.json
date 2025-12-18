@@ -1,0 +1,115 @@
+{
+  "chapter": "Chapter 2: Drive Train",
+  "lessons": [
+    {
+      "id": "c2-intro",
+      "title": "What Is the Drive Train?",
+      "page": "21",
+      "text": "The drive train is the group of parts that move power from the engine to the wheels. The engine creates spinning power, but the drive train delivers that power where it is needed. Without a drive train, the engine could run but the car would not move.",
+      "analogy": "If the engine is the heart, the drive train is the bones and muscles that make the legs move.",
+      "quiz": {
+        "question": "What is the main job of the drive train?",
+        "options": [
+          "To make the engine spin",
+          "To move power from the engine to the wheels",
+          "To cool the engine"
+        ],
+        "answer": 1,
+        "feedback": "Correct. The drive train carries power from the engine to the wheels."
+      }
+    },
+    {
+      "id": "c2-clutch",
+      "title": "The Clutch",
+      "page": "22",
+      "text": "A clutch connects and disconnects the engine from the drive train. When the clutch is engaged, engine power flows to the wheels. When it is disengaged, the engine can run without moving the car.",
+      "analogy": "A clutch is like squeezing and releasing your hands together. When your hands touch, power passes through. When they separate, power stops.",
+      "quiz": {
+        "question": "What does the clutch allow the driver to do?",
+        "options": [
+          "Stop the engine",
+          "Change gears without damaging parts",
+          "Cool the transmission"
+        ],
+        "answer": 1,
+        "feedback": "Yes. The clutch lets gears change smoothly without grinding."
+      }
+    },
+    {
+      "id": "c2-transmission",
+      "title": "The Transmission",
+      "page": "24",
+      "text": "The transmission changes how fast the wheels spin compared to the engine. It uses different sized gears to control speed and power. Lower gears provide more power. Higher gears provide more speed.",
+      "analogy": "A transmission works like the gears on a bicycle. You shift to make pedaling easier uphill or faster on flat ground.",
+      "quiz": {
+        "question": "Why does a car need different gears?",
+        "options": [
+          "To change wheel size",
+          "To balance power and speed",
+          "To steer the car"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Gears control power and speed."
+      }
+    },
+    {
+      "id": "c2-driveshaft",
+      "title": "The Driveshaft",
+      "page": "27",
+      "text": "A driveshaft is a long rotating shaft that carries power from the transmission to the differential. It must stay balanced and spin smoothly, even as the car moves over bumps.",
+      "analogy": "A driveshaft is like a spinning broom handle carrying motion from one end to the other.",
+      "quiz": {
+        "question": "What does the driveshaft carry?",
+        "options": [
+          "Fuel",
+          "Spinning power",
+          "Electrical signals"
+        ],
+        "answer": 1,
+        "feedback": "Right. The driveshaft carries spinning power."
+      }
+    },
+    {
+      "id": "c2-differential",
+      "title": "The Differential",
+      "page": "28",
+      "text": "The differential splits power between the wheels. It allows wheels to turn at different speeds when cornering. This prevents tire wear and makes turning smoother.",
+      "analogy": "A differential is like letting one foot take a longer step when turning, instead of forcing both feet to move the same distance.",
+      "quiz": {
+        "question": "Why do wheels need to turn at different speeds?",
+        "options": [
+          "To save fuel",
+          "To turn corners smoothly",
+          "To cool the brakes"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Wheels travel different distances when turning."
+      }
+    },
+    {
+      "id": "c2-axles",
+      "title": "Axles",
+      "page": "29",
+      "text": "Axles connect the differential to the wheels. They transfer power while supporting the weight of the vehicle. Axles must be strong and flexible.",
+      "analogy": "Axles are like strong arms pushing the wheels forward.",
+      "quiz": {
+        "question": "What do axles connect?",
+        "options": [
+          "Engine to transmission",
+          "Differential to wheels",
+          "Wheels to brakes"
+        ],
+        "answer": 1,
+        "feedback": "Yes. Axles connect the differential to the wheels."
+      }
+    },
+    {
+      "id": "c2-review",
+      "title": "Drive Train Review",
+      "page": "30",
+      "text": "Review the drive train parts in order: clutch, transmission, driveshaft, differential, axles. Say each part out loud and explain what it does in one sentence.",
+      "analogy": "This is like walking through the path power takes from the engine to the road.",
+      "quiz": null
+    }
+  ]
+}
