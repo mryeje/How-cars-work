@@ -263,10 +263,10 @@
   <div class="header-content">
     <div>
       <h1>How Cars Work</h1>
-      <span class="subtitle">How Cars Work Course</span>
+      <span class="subtitle">Dad's Learning Course</span>
     </div>
     <div class="header-actions">
-      <button class="book-btn" onclick="window.open('How-Cars-Work.pdf', '_blank')">
+      <button class="book-btn" onclick="openTextbook()">
         📖 Open Textbook
       </button>
       <div class="timer-widget">
@@ -365,6 +365,9 @@ async function startApp() {
   try {
     await loadCourse();
     init(); // ONLY initialize after data loads
+    
+    // Check if PDF exists
+    checkPdfAvailability();
   } catch (err) {
     console.error("Course failed to load:", err);
     const errorDetails = err.message || String(err);
@@ -381,6 +384,23 @@ async function startApp() {
       </ol>
       <p><strong>Current location:</strong> ${window.location.href}</p>
     `;
+  }
+}
+
+async function checkPdfAvailability() {
+  const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+  const pdfUrl = base + 'How-Cars-Work.pdf';
+  
+  try {
+    const response = await fetch(pdfUrl, { method: 'HEAD' });
+    if (!response.ok) {
+      console.warn('PDF not found at:', pdfUrl);
+      console.warn('Make sure How-Cars-Work.pdf is in the root directory of your repo');
+    } else {
+      console.log('PDF found successfully at:', pdfUrl);
+    }
+  } catch (err) {
+    console.warn('Could not check PDF availability:', err);
   }
 }
 
@@ -573,6 +593,26 @@ function toggleTimer() {
     const s = (timeLeft % 60).toString().padStart(2, '0');
     display.textContent = `${m}:${s}`;
   }, 1000);
+}
+
+function openTextbook() {
+  // Use the same base URL logic as course data
+  const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+  const pdfUrl = base + 'How-Cars-Work.pdf';
+  
+  console.log('Attempting to open PDF at:', pdfUrl);
+  
+  // Try to open in new tab
+  const newWindow = window.open(pdfUrl, '_blank');
+  
+  // If popup blocked or failed, offer download
+  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+    // Fallback: create download link
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'How-Cars-Work.pdf';
+    link.click();
+  }
 }
 </script>
 
