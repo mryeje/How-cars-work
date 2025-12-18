@@ -257,73 +257,74 @@
 </div>
 
 <script>
-// ==========================================
-// COURSE DATA - EDIT YOUR LESSONS HERE
-// ==========================================
-const courseData = [
-  {
-    "id": "1_intro",
-    "chapter": "Chapter 1: The Basics",
-    "title": "What is an Engine?",
-    "page": 5,
-    "text": "An internal combustion engine uses small explosions to create motion. It takes chemical energy (gasoline) and turns it into mechanical energy (movement).",
-    "analogy": "Think of an engine like a cyclist's legs. The food the cyclist eats is the fuel. Their legs pushing down on the pedals are the pistons.",
-    "quiz": {
-      "question": "What kind of energy does the engine start with?",
-      "options": ["Mechanical Energy", "Chemical Energy", "Solar Energy"],
-      "answer": 1,
-      "feedback": "Correct! The gasoline holds chemical energy."
-    }
-  },
-  {
-    "id": "1_fourstroke",
-    "chapter": "Chapter 1: The Basics",
-    "title": "The Four Strokes",
-    "page": 8,
-    "text": "Most cars use a 4-stroke cycle: Intake, Compression, Combustion, and Exhaust 
+let courseData = [];
 
-[Image of internal combustion engine cycle]
-. This cycle repeats thousands of times per minute.",
-    "analogy": "Suck, Squeeze, Bang, Blow. That is the easiest way to remember the order of the strokes.",
-    "quiz": {
-      "question": "What happens after Combustion (The Bang)?",
-      "options": ["Intake", "Compression", "Exhaust"],
-      "answer": 2,
-      "feedback": "Yes! After the explosion, the smoke needs to leave (Blow/Exhaust)."
-    }
-  },
-  {
-    "id": "2_oil",
-    "chapter": "Chapter 2: Maintenance",
-    "title": "Why Oil Matters",
-    "page": 22,
-    "text": "Oil lubricates the moving parts. Without it, metal rubs against metal, creating massive heat and eventually seizing the engine.",
-    "analogy": "Rub your hands together very fast. They get hot! Now imagine putting soap and water between them—they slide easily. That is what oil does.",
-    "quiz": {
-      "question": "What is the main job of oil?",
-      "options": ["To power the car", "To cool the radiator", "To lubricate moving parts"],
-      "answer": 2,
-      "feedback": "Exactly. It stops friction."
-    }
-  }
-];
-// ==========================================
+async function loadCourse() {
+  // Works on GitHub Pages even when the site is under /repo-name/
+  const base = location.origin + location.pathname.replace(/\/[^/]*$/, "/");
 
-init();
+  const manifestResp = await fetch(base + "data/manifest.json");
+  if (!manifestResp.ok) throw new Error("Missing data/manifest.json (HTTP " + manifestResp.status + ")");
+  const manifest = await manifestResp.json();
+
+  const chapterFiles = manifest.chapters.map(c => base + "data/" + c.file);
+
+  const chapters = await Promise.all(
+    chapterFiles.map(async (url) => {
+      const r = await fetch(url);
+      if (!r.ok) throw new Error("Missing chapter file: " + url + " (HTTP " + r.status + ")");
+      return r.json();
+    })
+  );
+
+  // Flatten into the structure the app expects
+  courseData = chapters.flatMap(ch =>
+    (ch.lessons || []).map(L => ({
+      ...L,                 // <-- IMPORTANT: spread operator
+      chapter: ch.chapter
+    }))
+  );
+}
 
 let currentLessonIndex = 0;
 let doneLessons = JSON.parse(localStorage.getItem('carCourse_done')) || [];
 
 function init() {
+  if (!courseData || courseData.length === 0) {
+    document.getElementById('lessonContainer').innerHTML = `
+      <h2>⚠️ No lessons found</h2>
+      <p>manifest.json loaded, but no lessons were found in the chapter files.</p>
+    `;
+    return;
+  }
+
   renderSidebar();
 
-  const savedIndex = localStorage.getItem('carCourse_lastIndex');
-  if (savedIndex && savedIndex < courseData.length) {
-    loadLesson(parseInt(savedIndex, 10));
+  const savedIndexRaw = localStorage.getItem('carCourse_lastIndex');
+  const savedIndex = savedIndexRaw ? parseInt(savedIndexRaw, 10) : 0;
+
+  if (Number.isFinite(savedIndex) && savedIndex >= 0 && savedIndex < courseData.length) {
+    loadLesson(savedIndex);
   } else {
     loadLesson(0);
   }
 }
+
+async function startApp() {
+  try {
+    await loadCourse();
+    init(); // ONLY initialize after data loads
+  } catch (err) {
+    console.error("Course failed to load:", err);
+    document.getElementById('lessonContainer').innerHTML = `
+      <h2>⚠️ Course Load Error</h2>
+      <p>${String(err.message || err)}</p>
+      <p>Check that <code>data/manifest.json</code> and your chapter JSON filenames match exactly (case-sensitive).</p>
+    `;
+  }
+}
+
+startApp();
 
 function renderSidebar() {
   const sidebar = document.getElementById('sidebar');
@@ -353,11 +354,14 @@ function renderSidebar() {
 
 function loadLesson(index) {
   if (!courseData || courseData.length === 0) return;
+  if (index < 0 || index >= courseData.length) index = 0;
 
   currentLessonIndex = index;
   localStorage.setItem('carCourse_lastIndex', index);
 
   const lesson = courseData[index];
+  if (!lesson) return;
+
   const container = document.getElementById('lessonContainer');
   const checkbox = document.getElementById('markDone');
 
@@ -365,13 +369,13 @@ function loadLesson(index) {
 
   let quizHTML = "";
   if (lesson.quiz) {
-    const safeFeedback = lesson.quiz.feedback.replace(/'/g, "\\'");
+    const safeFeedback = String(lesson.quiz.feedback || "").replace(/'/g, "\\'");
     quizHTML = `
       <div class="quiz-box">
         <h3>Quick Practice:</h3>
         <p>${lesson.quiz.question}</p>
         <div id="quizOptions">
-          ${lesson.quiz.options.map((opt, i) =>
+          ${(lesson.quiz.options || []).map((opt, i) =>
             `<button class="option" onclick="checkAnswer(this, ${i}, ${lesson.quiz.answer}, '${safeFeedback}')">${opt}</button>`
           ).join('')}
         </div>
@@ -391,19 +395,19 @@ function loadLesson(index) {
   }
 
   container.innerHTML = `
-    <div class="lesson-meta">Page ${lesson.page} • ${lesson.chapter}</div>
+    <div class="lesson-meta">Page ${lesson.page ?? ""} • ${lesson.chapter}</div>
     <h2>${lesson.title}</h2>
 
     ${analogyHTML}
 
     <div class="book-reference">
       <strong>📖 Book Reading:</strong><br>
-      Please turn to <strong>Page ${lesson.page}</strong> in the book.<br>
-      <em>Look at the diagram while you read the text below.</em> 
+      Please turn to <strong>Page ${lesson.page ?? ""}</strong> in the book.<br>
+      <em>Look at the diagram while you read the text below.</em>
     </div>
 
     <div class="content-text">
-      ${lesson.text}
+      ${lesson.text || ""}
     </div>
 
     <div class="recall-box">
@@ -422,6 +426,7 @@ function loadLesson(index) {
 function checkAnswer(btnElement, choiceIndex, correctIndex, feedbackText) {
   const parent = document.getElementById('quizOptions');
   const feedbackEl = document.getElementById('quizFeedback');
+  if (!parent || !feedbackEl) return;
 
   Array.from(parent.children).forEach(btn => {
     btn.classList.remove('correct', 'incorrect');
@@ -461,6 +466,7 @@ function prevLesson() {
 function toggleDone() {
   const lesson = courseData[currentLessonIndex];
   const checkbox = document.getElementById('markDone');
+  if (!lesson || !checkbox) return;
 
   if (checkbox.checked) {
     if (!doneLessons.includes(lesson.id)) doneLessons.push(lesson.id);
@@ -509,5 +515,6 @@ function toggleTimer() {
   }, 1000);
 }
 </script>
+
 </body>
 </html>
