@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>How Cars Work</title>
 <style>
@@ -261,19 +262,28 @@ let courseData = [];
 
 async function loadCourse() {
   // Works on GitHub Pages even when the site is under /repo-name/
-  const base = location.origin + location.pathname.replace(/\/[^/]*$/, "/");
+  const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
 
+  console.log('Loading course from base URL:', base);
+  
   const manifestResp = await fetch(base + "data/manifest.json");
   if (!manifestResp.ok) throw new Error("Missing data/manifest.json (HTTP " + manifestResp.status + ")");
+  
+  console.log('Manifest loaded successfully');
   const manifest = await manifestResp.json();
+  console.log('Manifest parsed:', manifest);
 
   const chapterFiles = manifest.chapters.map(c => base + "data/" + c.file);
+  console.log('Loading chapter files:', chapterFiles);
 
   const chapters = await Promise.all(
     chapterFiles.map(async (url) => {
+      console.log('Fetching:', url);
       const r = await fetch(url);
       if (!r.ok) throw new Error("Missing chapter file: " + url + " (HTTP " + r.status + ")");
-      return r.json();
+      const data = await r.json();
+      console.log('Loaded chapter:', data.chapter);
+      return data;
     })
   );
 
@@ -284,6 +294,8 @@ async function loadCourse() {
       chapter: ch.chapter
     }))
   );
+  
+  console.log('Course data loaded. Total lessons:', courseData.length);
 }
 
 let currentLessonIndex = 0;
@@ -316,10 +328,19 @@ async function startApp() {
     init(); // ONLY initialize after data loads
   } catch (err) {
     console.error("Course failed to load:", err);
+    const errorDetails = err.message || String(err);
     document.getElementById('lessonContainer').innerHTML = `
       <h2>⚠️ Course Load Error</h2>
-      <p>${String(err.message || err)}</p>
-      <p>Check that <code>data/manifest.json</code> and your chapter JSON filenames match exactly (case-sensitive).</p>
+      <p style="color: #d32f2f; font-weight: bold;">${errorDetails}</p>
+      <h3>Troubleshooting steps:</h3>
+      <ol>
+        <li>Check that <code>data/manifest.json</code> exists</li>
+        <li>Verify all chapter JSON files referenced in manifest.json exist in the <code>data/</code> folder</li>
+        <li>File names are case-sensitive (chapter1.json ≠ Chapter1.json)</li>
+        <li>Make sure all JSON files are valid (no trailing commas, proper quotes)</li>
+        <li>Check the browser console (F12) for more detailed errors</li>
+      </ol>
+      <p><strong>Current location:</strong> ${window.location.href}</p>
     `;
   }
 }
