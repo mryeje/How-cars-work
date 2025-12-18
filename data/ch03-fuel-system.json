@@ -1,0 +1,98 @@
+{
+  "chapter": "Chapter 3: Fuel System",
+  "lessons": [
+    {
+      "id": "c3-intro",
+      "title": "What a Fuel System Does",
+      "page": "??",
+      "text": "A fuel system has one main job: supply an engine with fuel. It also helps get the fuel ready so it can burn the right way inside the engine.",
+      "analogy": "Think of it like a wood stove setup: you need a steady supply of good fuel, delivered smoothly, so the fire burns the way you want.",
+      "quiz": {
+        "question": "What is the main job of the fuel system?",
+        "options": [
+          "To cool the engine",
+          "To supply the engine with fuel",
+          "To charge the battery"
+        ],
+        "answer": 1,
+        "feedback": "Correct. The fuel system’s main job is to supply fuel to the engine."
+      }
+    },
+    {
+      "id": "c3-fuel-tank",
+      "title": "Fuel Tank",
+      "page": "??",
+      "text": "The fuel tank stores gasoline (or diesel) so the car can run for many miles. The tank must be strong and sealed so fuel does not leak.",
+      "analogy": "It’s like a sealed jerry can built into the vehicle.",
+      "quiz": {
+        "question": "What does the fuel tank do?",
+        "options": [
+          "Stores fuel safely",
+          "Creates spark",
+          "Turns the wheels"
+        ],
+        "answer": 0,
+        "feedback": "Yes. The fuel tank stores fuel safely."
+      }
+    },
+    {
+      "id": "c3-fuel-pump",
+      "title": "Fuel Pump",
+      "page": "??",
+      "text": "The fuel pump moves fuel from the tank toward the engine. Many cars use an electric fuel pump to push fuel forward under pressure.",
+      "analogy": "Like a small pump that moves water through a hose—except it’s fuel.",
+      "quiz": {
+        "question": "What is the fuel pump’s job?",
+        "options": [
+          "Move fuel toward the engine",
+          "Cool the radiator",
+          "Open and close valves"
+        ],
+        "answer": 0,
+        "feedback": "Correct. The fuel pump moves fuel from the tank to the engine area."
+      }
+    },
+    {
+      "id": "c3-fuel-filter",
+      "title": "Fuel Filter",
+      "page": "??",
+      "text": "A fuel filter removes dirt and particles from fuel before it reaches the engine. Clean fuel helps parts last longer and helps the engine run smoother.",
+      "analogy": "Like a water filter that stops grit from getting into a pump.",
+      "quiz": {
+        "question": "Why do we need a fuel filter?",
+        "options": [
+          "To remove dirt from fuel",
+          "To make the tires spin",
+          "To create heat in the engine"
+        ],
+        "answer": 0,
+        "feedback": "Right. It removes dirt and particles before fuel reaches the engine."
+      }
+    },
+    {
+      "id": "c3-mixing",
+      "title": "Mixing Fuel With Air",
+      "page": "??",
+      "text": "Engines do not burn liquid fuel well by itself. Fuel must mix with air in the right amount. Older systems used a carburetor. Many newer systems use fuel injection.",
+      "analogy": "Like starting a campfire: you need fuel and air together, not one without the other.",
+      "quiz": {
+        "question": "What must fuel mix with to burn properly?",
+        "options": [
+          "Oil",
+          "Air",
+          "Coolant"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Fuel must mix with air to burn properly."
+      }
+    },
+    {
+      "id": "c3-review",
+      "title": "Fuel System Review",
+      "page": "??",
+      "text": "Say these parts out loud in order and explain each in one sentence: fuel tank, fuel pump, fuel filter, mixing with air. If you can say it, you know it.",
+      "analogy": "This is your quick ‘say-it-back’ check before moving on.",
+      "quiz": null
+    }
+  ]
+}
