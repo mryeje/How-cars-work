@@ -257,43 +257,59 @@
 </div>
 
 <script>
-let courseData = [];
+// ==========================================
+// COURSE DATA - EDIT YOUR LESSONS HERE
+// ==========================================
+const courseData = [
+  {
+    "id": "1_intro",
+    "chapter": "Chapter 1: The Basics",
+    "title": "What is an Engine?",
+    "page": 5,
+    "text": "An internal combustion engine uses small explosions to create motion. It takes chemical energy (gasoline) and turns it into mechanical energy (movement).",
+    "analogy": "Think of an engine like a cyclist's legs. The food the cyclist eats is the fuel. Their legs pushing down on the pedals are the pistons.",
+    "quiz": {
+      "question": "What kind of energy does the engine start with?",
+      "options": ["Mechanical Energy", "Chemical Energy", "Solar Energy"],
+      "answer": 1,
+      "feedback": "Correct! The gasoline holds chemical energy."
+    }
+  },
+  {
+    "id": "1_fourstroke",
+    "chapter": "Chapter 1: The Basics",
+    "title": "The Four Strokes",
+    "page": 8,
+    "text": "Most cars use a 4-stroke cycle: Intake, Compression, Combustion, and Exhaust 
 
-async function loadCourse() {
-  // Detects the current URL so it works on GitHub Pages or Localhost
-  const base = location.origin + location.pathname.replace(/\/[^/]*$/, "/");
-  
-  try {
-    const manifest = await fetch(base + "data/manifest.json").then(r => r.json());
-    
-    // Load all chapter files defined in the manifest
-    const chapterFiles = manifest.chapters.map(c => base + "data/" + c.file);
-    const chapters = await Promise.all(chapterFiles.map(f => fetch(f).then(r => r.json())));
-
-    // Flatten into a single list of lessons
-    courseData = chapters.flatMap(ch => 
-      ch.lessons.map(L => ({
-        ...L,
-        chapter: ch.chapter
-      }))
-    );
-    
-    init(); // Only render after data is loaded
-  } catch (err) {
-    console.error("Course failed to load:", err);
-    document.getElementById('lessonContainer').innerHTML = `
-      <h2>⚠️ Course Load Error</h2>
-      <p>Could not load the data files. Please check the Console (F12) for details.</p>
-      <p><strong>Note:</strong> If you are opening this file locally, you must use a local server (like VS Code Live Server) or view it via GitHub Pages.</p>
-    `;
+[Image of internal combustion engine cycle]
+. This cycle repeats thousands of times per minute.",
+    "analogy": "Suck, Squeeze, Bang, Blow. That is the easiest way to remember the order of the strokes.",
+    "quiz": {
+      "question": "What happens after Combustion (The Bang)?",
+      "options": ["Intake", "Compression", "Exhaust"],
+      "answer": 2,
+      "feedback": "Yes! After the explosion, the smoke needs to leave (Blow/Exhaust)."
+    }
+  },
+  {
+    "id": "2_oil",
+    "chapter": "Chapter 2: Maintenance",
+    "title": "Why Oil Matters",
+    "page": 22,
+    "text": "Oil lubricates the moving parts. Without it, metal rubs against metal, creating massive heat and eventually seizing the engine.",
+    "analogy": "Rub your hands together very fast. They get hot! Now imagine putting soap and water between them—they slide easily. That is what oil does.",
+    "quiz": {
+      "question": "What is the main job of oil?",
+      "options": ["To power the car", "To cool the radiator", "To lubricate moving parts"],
+      "answer": 2,
+      "feedback": "Exactly. It stops friction."
+    }
   }
-}
+];
+// ==========================================
 
-async function startApp() {
-  await loadCourse();
-}
-
-startApp();
+init();
 
 let currentLessonIndex = 0;
 let doneLessons = JSON.parse(localStorage.getItem('carCourse_done')) || [];
@@ -302,7 +318,7 @@ function init() {
   renderSidebar();
 
   const savedIndex = localStorage.getItem('carCourse_lastIndex');
-  if (savedIndex && parseInt(savedIndex) < courseData.length) {
+  if (savedIndex && savedIndex < courseData.length) {
     loadLesson(parseInt(savedIndex, 10));
   } else {
     loadLesson(0);
