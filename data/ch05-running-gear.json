@@ -1,0 +1,221 @@
+{
+  "chapter": "Chapter 5: Running Gear",
+  "lessons": [
+    {
+      "id": "ch05-lesson01",
+      "title": "Running Gear Overview",
+      "page": 51,
+      "text": "The running gear includes the parts used to guide a vehicle through bumps, swerves, and road hazards. The running gear connects a driver to the roadway and helps negotiate rough roads, sharp turns, and fast stops, all while keeping a constant weight on all four tires. Parts from the suspension, steering, and wheels keep tires on the road and a driver in control.",
+      "analogy": "Think of running gear as the car's legs and feet. Just like your legs absorb bumps when you walk and your feet grip the ground to keep you balanced, the running gear absorbs road bumps and keeps the tires gripping the road so you stay in control.",
+      "quiz": {
+        "question": "What is the main job of the running gear?",
+        "options": [
+          "To make the engine run faster",
+          "To keep tires on the road and the driver in control through bumps and turns",
+          "To cool down the brakes",
+          "To pump fuel to the engine"
+        ],
+        "answer": 1,
+        "feedback": "Correct! The running gear connects you to the road, handling bumps, turns, and stops while keeping all four tires in contact with the pavement."
+      }
+    },
+    {
+      "id": "ch05-lesson02",
+      "title": "Frame",
+      "page": 52,
+      "text": "A frame is a solid base for all car parts: engine, tires, doors, windows, seats, and the driver and passengers. Two basic frame designs are used: platform and unibody. A platform system is a solid series of steel beams welded together to form a large base supporting all other car parts. A unibody system uses fenders, floorboards, firewall, and other body parts, rather than a separate platform, to provide rigid structure.",
+      "analogy": "The frame is like the skeleton of your body - it supports everything else and holds it all together. A platform frame is like having a separate foundation board that everything sits on, while a unibody is like having the walls of a house also serve as the structure - the body parts themselves provide the strength.",
+      "quiz": {
+        "question": "What is the difference between a platform frame and a unibody frame?",
+        "options": [
+          "Platform uses separate steel beams as a base; unibody uses the body parts themselves for structure",
+          "Platform is made of plastic; unibody is made of steel",
+          "There is no difference between them",
+          "Platform is only for trucks; unibody is only for cars"
+        ],
+        "answer": 0,
+        "feedback": "Right! A platform frame has a separate steel beam structure underneath, while a unibody frame uses the car's body parts welded together to provide the strength."
+      }
+    },
+    {
+      "id": "ch05-lesson03",
+      "title": "Suspension System",
+      "page": 53,
+      "text": "A suspension system provides the connection between a frame and the wheel assemblies. This connection must absorb bumps and twists, while keeping an equal distribution of weight on each tire. Modern systems use separate, independent suspension, for all four wheels. A stabilizer bar, or sway bar, transfers lifting force to the opposite wheel to help level a vehicle when cornering.",
+      "analogy": "The suspension is like shock-absorbing sneakers. When you jump, good sneakers cushion the landing and keep your feet level. Similarly, the suspension cushions road bumps and keeps all four tires evenly weighted on the ground, so you don't bounce around inside the car.",
+      "quiz": {
+        "question": "What are the three main jobs of a suspension system?",
+        "options": [
+          "Making the car go faster, use less gas, and look better",
+          "Maintaining equal weight on each tire, keeping the car level, and insulating passengers from bumps",
+          "Steering the car, stopping the car, and starting the engine",
+          "Cooling the engine, charging the battery, and filtering the air"
+        ],
+        "answer": 1,
+        "feedback": "Perfect! The suspension keeps weight evenly distributed on all tires, keeps the car level during turns, and gives passengers a smooth ride by absorbing road bumps."
+      }
+    },
+    {
+      "id": "ch05-lesson04",
+      "title": "Types of Springs",
+      "page": 54,
+      "text": "Suspension springs provide a steel cushion between the wheels and a frame. Three types of springs are used: leaf springs, coil springs, and torsion bars. Leaf springs are made from several long strips of steel bolted together and are almost always used on the rear wheels. Coil springs support the front ends of most cars - these thick metal coils return to their original position after distortion. Torsion bars look like plain steel rods but act like coil springs because of a built-in twist.",
+      "analogy": "Springs in a car work like the springs in a mattress or trampoline - they compress when you push on them and bounce back to their original shape. Leaf springs are like stacking flexible rulers on top of each other, coil springs are like a Slinky toy, and torsion bars are like twisting a metal rod - they all spring back after being pushed or twisted.",
+      "quiz": {
+        "question": "What are the three types of suspension springs?",
+        "options": [
+          "Big springs, small springs, and medium springs",
+          "Leaf springs, coil springs, and torsion bars",
+          "Front springs, rear springs, and side springs",
+          "Gas springs, oil springs, and air springs"
+        ],
+        "answer": 1,
+        "feedback": "That's right! The three types are leaf springs (stacked steel strips), coil springs (like a Slinky), and torsion bars (twisted steel rods). Each type provides cushioning in a different way."
+      }
+    },
+    {
+      "id": "ch05-lesson05",
+      "title": "Shock Absorbers",
+      "page": 55,
+      "text": "A shock absorber stabilizes or dampens the up and down bouncing of the springs. Shock absorbers work only when a car bounces - at rest they have no function. A shock absorber is a sealed cylinder filled with hydraulic fluid with a plunger/piston inside. When a car bounces, the shock absorber piston is forced through the fluid. The resistant force of the fluid on the piston dampens the bouncing.",
+      "analogy": "A shock absorber is like pushing your hand through water. When you move slowly, there's little resistance, but when you move fast (like hitting a bump), the water pushes back hard and slows you down. This is how shock absorbers control bouncing - they let the spring compress, but the thick fluid inside slows down how fast it bounces back.",
+      "quiz": {
+        "question": "How do shock absorbers work?",
+        "options": [
+          "They use springs to bounce the car up and down",
+          "A piston pushes through thick hydraulic fluid, which dampens the bouncing",
+          "They use electricity to stop the car from moving",
+          "They cool down the wheels when they get hot"
+        ],
+        "answer": 1,
+        "feedback": "Exactly! When the car bounces, a piston is forced through thick hydraulic fluid inside the shock absorber. The fluid resists this movement, which slows down and dampens the bouncing."
+      }
+    },
+    {
+      "id": "ch05-lesson06",
+      "title": "MacPherson Struts",
+      "page": 55,
+      "text": "A MacPherson strut is a special kind of shock absorber that incorporates a coil spring and a shock absorber in a single unit. MacPherson struts are often used in front wheel drive vehicles to save space. This design combines the spring that supports the car's weight with the shock absorber that controls bouncing, all in one compact package.",
+      "analogy": "A MacPherson strut is like a combination tool - imagine combining a hammer and a screwdriver into one tool instead of carrying two separate tools. Instead of having a separate spring and shock absorber, the MacPherson strut does both jobs in one unit, which saves space under the hood.",
+      "quiz": {
+        "question": "What makes a MacPherson strut special?",
+        "options": [
+          "It combines a coil spring and shock absorber in one unit",
+          "It only works on the rear wheels",
+          "It uses air instead of hydraulic fluid",
+          "It doesn't need any maintenance"
+        ],
+        "answer": 0,
+        "feedback": "Right! A MacPherson strut combines both the spring and the shock absorber into a single compact unit, which saves space and is commonly used in front-wheel-drive cars."
+      }
+    },
+    {
+      "id": "ch05-lesson07",
+      "title": "Steering Systems",
+      "page": 56,
+      "text": "A steering column and the steering gear are the two basic parts of a steering system. There are two fundamental types of steering gear systems: worm gear and rack and pinion. With a worm gear steering system, the steering wheel column extends to a steering box which transfers motion from the steering wheel to the front wheels using a worm gear and ball bearings. A rack and pinion steering system uses a sliding flat gear called a rack and a round stationary pinion gear. As the pinion gear rotates, it moves the rack back and forth, which turns the wheels.",
+      "analogy": "Steering systems turn the rotation of the steering wheel into sideways movement of the wheels. The worm gear system is like a screw mechanism - turning the screw makes something move along it. The rack and pinion is like a sliding ladder - turning a round gear makes a flat toothed bar (rack) slide left or right, which turns your wheels.",
+      "quiz": {
+        "question": "What are the two main types of steering gear systems?",
+        "options": [
+          "Manual and automatic",
+          "Worm gear and rack and pinion",
+          "Front and rear",
+          "Left and right"
+        ],
+        "answer": 1,
+        "feedback": "Correct! The two types are worm gear (also called recirculating ball) and rack and pinion. Both convert the steering wheel's rotation into wheel movement, just using different mechanical methods."
+      }
+    },
+    {
+      "id": "ch05-lesson08",
+      "title": "Power Steering",
+      "page": 57,
+      "text": "Power steering provides extra steering power, which is especially helpful with large vehicles and when parking. Both hydraulic and electric systems are used. Hydraulic power steering uses fluid pressure to assist front wheel turning. A power steering pump supplies the force behind the hydraulic fluid. Electric power steering uses an electric motor that activates only when a steering wheel is moved. This motorized system is considerably simpler than the hydraulic method.",
+      "analogy": "Power steering is like having power tools instead of hand tools. Imagine trying to turn a very tight bolt with just your hand versus using a power drill - power steering works the same way. It adds extra force to your steering so you don't have to work as hard to turn the wheel, especially when parking or driving a big vehicle.",
+      "quiz": {
+        "question": "What are the two types of power steering systems?",
+        "options": [
+          "Gas and diesel",
+          "Hydraulic (uses fluid pressure) and electric (uses an electric motor)",
+          "Front and rear",
+          "Manual and automatic"
+        ],
+        "answer": 1,
+        "feedback": "That's right! Hydraulic power steering uses pressurized fluid to help turn the wheels, while electric power steering uses an electric motor. Both systems make steering easier, especially at low speeds."
+      }
+    },
+    {
+      "id": "ch05-lesson09",
+      "title": "Ball Joints",
+      "page": 58,
+      "text": "Ball joints make a strong moveable or hinged connection between moving parts in the suspension and steering systems. Ball joints are used in the upper and lower control arms, the steering bars or tie rods, and a variety of other locations. Tie rods connect the steering gear and the two wheels. A tie rod end contains the ball joint and is replaced as a unit when a new ball joint is needed. Ball joints are often equipped with wear indicators for easy inspection and zerk fittings for injecting lubricating grease.",
+      "analogy": "A ball joint works like your shoulder or hip joint - it's a ball inside a socket that can move in multiple directions while still being strongly connected. This lets parts of the suspension and steering move and pivot smoothly while staying firmly attached. Just like your joints need to stay lubricated to work smoothly, ball joints need grease.",
+      "quiz": {
+        "question": "What do ball joints do?",
+        "options": [
+          "They make the engine run faster",
+          "They make a strong moveable connection between parts in the suspension and steering",
+          "They help the brakes stop the car",
+          "They hold the wheels onto the car"
+        ],
+        "answer": 1,
+        "feedback": "Perfect! Ball joints create flexible, hinged connections that let suspension and steering parts move and pivot while staying firmly connected - just like the joints in your body."
+      }
+    },
+    {
+      "id": "ch05-lesson10",
+      "title": "Wheels and Wheel Bearings",
+      "page": 59,
+      "text": "A car wheel is a combination of a rubber tire and metal rim. Wheels bolt to a brake drum, rotor, axle, or spindle with lug nuts, often located behind the hubcap. A steering knuckle and spindle pass through a wheel assembly and extend into a wheel hub. Wheel bearings inside a hub surround and attach the wheel to a spindle shaft or brake drum. The many roller bearings contained in a wheel bearing provide the only contact points between a moving wheel and the stationary spindle.",
+      "analogy": "Wheel bearings are like the bearings in a skateboard or bicycle wheel - they're small metal balls or rollers that let the wheel spin freely around the axle. Without bearings, there would be metal rubbing directly on metal, which would create heat and wear out quickly. The bearings make the wheel spin smoothly with very little friction.",
+      "quiz": {
+        "question": "What is the job of wheel bearings?",
+        "options": [
+          "To make the wheel spin freely around the axle with minimal friction",
+          "To hold air pressure in the tire",
+          "To connect the steering wheel to the wheels",
+          "To make the brakes work properly"
+        ],
+        "answer": 0,
+        "feedback": "Exactly! Wheel bearings contain small roller bearings that let the wheel spin smoothly around the stationary spindle with very little friction - just like bearings in a skateboard wheel."
+      }
+    },
+    {
+      "id": "ch05-lesson11",
+      "title": "Tire Types and Tread Patterns",
+      "page": 60,
+      "text": "Almost all cars use radial tires. The plies, or layers, in radial tires are arranged to reduce movement between the plies, which prevents overheating, reduces wear, and improves gas mileage. A tread pattern is the footprint of a tire. Without tread, a tire cannot direct water and gravel aside. Many special tread patterns exist: snow tires with large grooves for extra traction, mud and snow tires as a compromise, rain tires designed to push out water, and slicks for drag racing made completely smooth.",
+      "analogy": "Tire tread is like the grip pattern on the bottom of your shoes. Smooth shoes slip on wet floors, but shoes with grooves and patterns give you traction. Similarly, tire tread patterns channel away water and grip the road. Different patterns work best for different conditions - just like you might wear boots in snow and regular shoes on dry pavement.",
+      "quiz": {
+        "question": "Why do tires need tread patterns?",
+        "options": [
+          "To make the tire look better",
+          "To direct water and gravel aside and provide traction",
+          "To make the tire heavier",
+          "To help the tire hold more air"
+        ],
+        "answer": 1,
+        "feedback": "Right! Tread patterns are essential for channeling water away from under the tire and providing grip on the road surface. Different tread patterns are designed for different conditions like snow, rain, or dry roads."
+      }
+    },
+    {
+      "id": "ch05-lesson12",
+      "title": "How Tire Pressure Affects Contact",
+      "page": 60,
+      "text": "The weight of a car and tire pressure determine the amount of rubber that touches a road. Regardless of tire width or tread design, the total area of rubber touching a road is exactly the same for a given car weight and tire pressure. Bald tires are dangerous because the tread pattern has worn away and cannot direct water aside, not because there is less surface area touching the road.",
+      "analogy": "Think of tire pressure like the firmness of your mattress. Whether you have a wide mattress or a narrow one, if you weigh the same and the firmness is the same, the same total area of your body will sink into it. Similarly, for a given car weight and tire pressure, the same amount of rubber touches the road regardless of how wide the tire is. Bald tires are dangerous not because less rubber touches the road, but because the grooves that push water aside are gone.",
+      "quiz": {
+        "question": "Why are bald tires dangerous?",
+        "options": [
+          "Because there is less rubber touching the road",
+          "Because the tread pattern has worn away and cannot direct water aside",
+          "Because they make the car go slower",
+          "Because they use more gasoline"
+        ],
+        "answer": 1,
+        "feedback": "Correct! Bald tires are dangerous because they've lost their tread pattern, which means they can't channel water away. This causes hydroplaning on wet roads. The amount of rubber touching the road stays the same, but the ability to grip in wet conditions is lost."
+      }
+    }
+  ]
+}
