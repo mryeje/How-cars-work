@@ -16,6 +16,10 @@
     {
       "chapter": "Chapter 4: Cooling System",
       "file": "ch04-cooling-system.json"
+    },
+    {
+      "chapter": "Chapter 5: Running Gear",
+      "file": "ch05-running-gear.json"
     }
   ]
 }
