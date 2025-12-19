@@ -1,0 +1,149 @@
+{
+  "chapter": "Chapter 6: Brakes",
+  "lessons": [
+    {
+      "id": "c6-intro",
+      "title": "What Brakes Do",
+      "page": "??",
+      "text": "Brakes slow down or stop a moving vehicle. They work by creating friction that resists motion. When you press the brake pedal, you are telling the car to turn motion into heat.",
+      "analogy": "Brakes are like putting your hand on a spinning wheel. The rubbing slows it down.",
+      "quiz": {
+        "question": "What do brakes do?",
+        "options": [
+          "Make the car go faster",
+          "Slow down or stop motion",
+          "Turn the wheels"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Brakes slow down or stop motion."
+      }
+    },
+    {
+      "id": "c6-brake-pedal",
+      "title": "The Brake Pedal",
+      "page": "??",
+      "text": "The brake pedal is the driver’s control for the braking system. When you press the pedal, it sends force into the brake system so braking can begin.",
+      "analogy": "The pedal is like the handle on a clamp. Your foot pressure controls how tight the clamp squeezes.",
+      "quiz": {
+        "question": "What does pressing the brake pedal do?",
+        "options": [
+          "Sends force into the brake system",
+          "Shuts off the engine",
+          "Locks the steering wheel"
+        ],
+        "answer": 0,
+        "feedback": "Yes. Pressing the pedal sends force into the brake system."
+      }
+    },
+    {
+      "id": "c6-hydraulics",
+      "title": "Hydraulic Brake System",
+      "page": "??",
+      "text": "Most cars use a hydraulic brake system. This means brake fluid carries force from the pedal to the wheels. Fluid does not compress easily, so force moves evenly through the system.",
+      "analogy": "Like pushing on one end of a filled water hose and seeing pressure move to the other end.",
+      "quiz": {
+        "question": "Why is brake fluid useful?",
+        "options": [
+          "It burns fuel",
+          "It transfers force evenly",
+          "It cools the engine"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Brake fluid transfers force evenly through the system."
+      }
+    },
+    {
+      "id": "c6-master-cylinder",
+      "title": "Master Cylinder",
+      "page": "??",
+      "text": "The master cylinder turns pedal movement into hydraulic pressure. It pushes brake fluid through the brake lines when the pedal is pressed.",
+      "analogy": "The master cylinder is like a syringe pushing liquid through a tube.",
+      "quiz": {
+        "question": "What does the master cylinder create?",
+        "options": [
+          "Electrical power",
+          "Hydraulic pressure",
+          "Cooling air"
+        ],
+        "answer": 1,
+        "feedback": "Right. The master cylinder creates hydraulic pressure."
+      }
+    },
+    {
+      "id": "c6-brake-lines",
+      "title": "Brake Lines",
+      "page": "??",
+      "text": "Brake lines carry pressurized brake fluid from the master cylinder to each wheel. They must be strong and sealed so fluid cannot leak.",
+      "analogy": "Like strong pipes carrying water under pressure.",
+      "quiz": {
+        "question": "What do brake lines carry?",
+        "options": [
+          "Air",
+          "Brake fluid",
+          "Electricity"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Brake lines carry brake fluid."
+      }
+    },
+    {
+      "id": "c6-disc-brakes",
+      "title": "Disc Brakes",
+      "page": "??",
+      "text": "Disc brakes use brake pads to squeeze a spinning metal disc called a rotor. The friction between the pads and rotor slows the wheel.",
+      "analogy": "Like squeezing a spinning plate between two blocks of wood.",
+      "quiz": {
+        "question": "What do brake pads squeeze?",
+        "options": [
+          "The tire",
+          "The rotor",
+          "The axle"
+        ],
+        "answer": 1,
+        "feedback": "Yes. Brake pads squeeze the rotor."
+      }
+    },
+    {
+      "id": "c6-drum-brakes",
+      "title": "Drum Brakes",
+      "page": "??",
+      "text": "Drum brakes use curved shoes that press outward against the inside of a drum. Some cars use drum brakes on the rear wheels.",
+      "analogy": "Like pushing outward against the inside of a spinning bucket.",
+      "quiz": {
+        "question": "Where do drum brake shoes press?",
+        "options": [
+          "On the outside of a disc",
+          "Against the inside of a drum",
+          "On the tire tread"
+        ],
+        "answer": 1,
+        "feedback": "Correct. Drum brake shoes press outward against the inside of a drum."
+      }
+    },
+    {
+      "id": "c6-parking-brake",
+      "title": "Parking Brake",
+      "page": "??",
+      "text": "The parking brake holds the vehicle in place when parked. It usually works through cables rather than hydraulic pressure.",
+      "analogy": "Like setting a mechanical lock instead of holding pressure.",
+      "quiz": {
+        "question": "What is the main job of the parking brake?",
+        "options": [
+          "Stop the car while driving",
+          "Hold the car when parked",
+          "Pump brake fluid"
+        ],
+        "answer": 1,
+        "feedback": "Correct. The parking brake holds the car when parked."
+      }
+    },
+    {
+      "id": "c6-review",
+      "title": "Brake System Review",
+      "page": "??",
+      "text": "Say these parts out loud in order and explain each in one sentence: brake pedal, master cylinder, brake lines, brakes at the wheels. If you can say it clearly, you understand it.",
+      "analogy": "This is your slow walk through how stopping power moves from your foot to the road.",
+      "quiz": null
+    }
+  ]
+}

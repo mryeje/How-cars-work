@@ -20,6 +20,10 @@
     {
       "chapter": "Chapter 5: Running Gear",
       "file": "ch05-running-gear.json"
+    },
+	{
+      "chapter": "Chapter 6: Running Gear",
+      "file": "ch06-brakes.json"
     }
   ]
 }
